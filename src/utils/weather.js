@@ -9,6 +9,7 @@ const getWeather = (latitude, logitude, callback) => {
       callback("unable to find location", undefined);
     } else {
       const weather = body.current;
+      console.log(weather);
       callback(undefined, weather);
     }
   });

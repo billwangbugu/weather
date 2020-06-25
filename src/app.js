@@ -58,20 +58,17 @@ app.get("/weather", (req, res) => {
       if (error) {
         return console.log(error);
       }
-      getWeather(
-        latitude,
-        longitude,
-        (error, { temperature, weather_descriptions, feelslike }) => {
-          if (error) {
-            return res.send({ error: "got error" });
-          }
-          res.send({
-            forcast: `It is currently ${temperature} C degrees out, ${weather_descriptions}, feels like ${feelslike} C degree. `,
-            location,
-            address: req.query.address,
-          });
+      getWeather(latitude, longitude, (error, current) => {
+        if (error) {
+          return res.send({ error: "got error" });
         }
-      );
+        const forcast = `${current.weather_descriptions[0]}, Currently temperature ${current.temperature} C degrees, feels like ${current.feelslike} C degree, humidity: ${current.humidity}%  `;
+        res.send({
+          forcast: forcast,
+          location,
+          address: req.query.address,
+        });
+      });
     }
   );
 });

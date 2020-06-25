@@ -52,3 +52,13 @@ button {
   color: white;
   padding: 8px;
 }
+
+#message1 {
+  margin-top: 20px;
+  padding: 8px 0;
+}
+#message1,
+#message2 {
+  font-size: large;
+  font-weight: bold;
+}
